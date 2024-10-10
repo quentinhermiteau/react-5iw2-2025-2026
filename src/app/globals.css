@@ -40,3 +40,7 @@ a {
     color-scheme: dark;
   }
 }
+
+#notice {
+  margin-bottom: 20px;
+}

@@ -1,5 +1,3 @@
-import './styles.css';
-
 export default function List() {
   const friends = [
     { id: 893, name: "Lynn" },
