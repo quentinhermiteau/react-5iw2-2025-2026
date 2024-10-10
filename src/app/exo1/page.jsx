@@ -10,6 +10,9 @@ export default function Exo1() {
   }
 
   return (
+    <div id="notice">
+      Modifie ce code pour qu'il fonctionne correctement et que les informations de l'utilisateur soit affichées dans la div badge
+    </div>
     <div className="badge">
       <img alt={``} src={``} />
       <div>
