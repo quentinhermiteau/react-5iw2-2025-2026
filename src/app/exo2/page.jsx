@@ -1,3 +1,5 @@
+import './styles.css';
+
 export default function List() {
   const friends = [
     { id: 893, name: "Lynn" },
@@ -10,6 +12,10 @@ export default function List() {
 
   return (
     <>
+      <div id="notice">
+        <p>Modifie ce code pour qu'il affiche les listes correctement, attention de ne pas oublier l'attribut key!</p>
+        <p>Pour le deuxième tableau, trouve un moyen de lui donner une key unique, utilise tes connaissances de la fonction map</p>
+      </div>
       <div>
         Friends:
         <ul></ul>
