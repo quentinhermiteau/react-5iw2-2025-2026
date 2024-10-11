@@ -8,7 +8,7 @@ export default function Exo1() {
   const img = "https://avatars0.githubusercontent.com/u/2933430";
 
   const getDate = () => {
-    return new Date().toLocaleDateString();
+    return new Date().toDateString();
   }
 
   return (
