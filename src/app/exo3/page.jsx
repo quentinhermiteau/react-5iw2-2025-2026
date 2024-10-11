@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import './styles.css';
+import "./styles.css";
 
 const USER_DATA = {
   name: "Ben Adam",
   img: "https://avatars.githubusercontent.com/u/6645985",
-  handle: "benadam11"
+  handle: "benadam11",
 };
 function Avatar() {
   return <img src={``} alt={``} />;
@@ -19,9 +19,9 @@ function Handle() {
   return <p>@HANDLE</p>;
 }
 
-function Badge({ style }) {
+function Badge() {
   return (
-    <div style={style}>
+    <div style="">
       <Avatar />
       <div>
         <Name />
@@ -51,7 +51,7 @@ export default function App() {
         flexDirection: "column",
         alignItems: "center",
         gap: "16px",
-        textAlign: "center"
+        textAlign: "center",
       }}
       addFriend={() => alert("Added!")}
     >
@@ -59,6 +59,6 @@ export default function App() {
         Ben enjoys running, surfing, and binge watching the Twilight series.
       </p>
       <button onClick={handleAddFriend}>Add Friend</button>
-      </Badge>
+    </Badge>
   );
 }
