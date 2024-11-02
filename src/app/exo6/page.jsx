@@ -1,7 +1,5 @@
 "use client";
 
-import * as React from "react";
-
 import "./styles.css";
 
 export default function Exo6({ characterLimit = 20 }) {
