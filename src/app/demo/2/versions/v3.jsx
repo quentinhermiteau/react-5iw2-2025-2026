@@ -1,8 +1,9 @@
 "use client";
 
 import { useRef, useState } from "react";
-import formatTime from "../utils";
+import formatTime from "./utils";
 
+// Utilisation de useRef
 export default function StopwatchV3() {
   const [seconds, setSeconds] = useState(0);
   const [running, setRunning] = useState(false);

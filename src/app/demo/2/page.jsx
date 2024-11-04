@@ -1,22 +1,15 @@
 "use client";
 
-import { useRef } from "react";
+import StopwatchV1 from "./versions/v1";
+import StopwatchV2 from "./versions/v2";
+import StopwatchV3 from "./versions/v3";
 
 export default function Page() {
-  const btnRef = useRef(null);
-
-  const handleClick = () => {
-    btnRef.current.disabled = true;
-    btnRef.current.innerText = "Clicked";
-  };
-
   return (
     <main>
-      <div>
-        <button ref={btnRef} onClick={handleClick}>
-          Click Me
-        </button>
-      </div>
+      <StopwatchV1 />
+      <StopwatchV2 />
+      <StopwatchV3 />
     </main>
   );
 }

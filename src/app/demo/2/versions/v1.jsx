@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import formatTime from "../utils";
+import formatTime from "./utils";
 
+// Problème avec id reset à chaque render
 export default function StopwatchV1() {
   const [seconds, setSeconds] = useState(0);
   const [running, setRunning] = useState(false);

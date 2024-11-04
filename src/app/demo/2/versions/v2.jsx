@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import formatTime from "../utils";
+import formatTime from "./utils";
 
+// Problème avec id, useState utilisé pour gérer un state non utilisé dans le render
 export default function StopwatchV2() {
   const [seconds, setSeconds] = useState(0);
   const [running, setRunning] = useState(false);
