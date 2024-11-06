@@ -20,9 +20,9 @@ span {
 }
 
 .error {
-  color: var(--red);
+  color: #ff0000;
 }
 
 .no-error {
-  color: var(--beige);
+  color: #00ff00;
 }
