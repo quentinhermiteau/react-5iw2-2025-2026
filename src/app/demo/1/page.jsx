@@ -37,7 +37,7 @@ export default function Page() {
     <main>
       <div>{JSON.stringify({ todo })}</div>
       <div>
-        <button onClick={() => (id > 1 ? setId(id + 1) : null)}>
+        <button onClick={() => (id > 1 ? setId(id - 1) : null)}>
           Previous
         </button>
         <button onClick={() => setId(id + 1)}>Next</button>
