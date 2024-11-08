@@ -24,7 +24,7 @@ const translations = {
 const languageContext = createContext({
   language: "en",
   changeLanguage: () => {},
-  translation: (key) => key,
+  translate: (key) => key,
 });
 
 function LanguageProvider({ children }) {
@@ -32,7 +32,7 @@ function LanguageProvider({ children }) {
 
   const changeLanguage = () => {};
 
-  const translation = () => {};
+  const translate = () => {};
 
   return null;
 }
@@ -54,12 +54,12 @@ function LanguageSwitcher() {
 }
 
 function Greeting() {
-  const translation = () => {};
+  const translate = () => {};
 
   return (
     <div>
-      <h1>{translation("hello")}</h1>
-      <p>{translation("welcome")}</p>
+      <h1>{translate("hello")}</h1>
+      <p>{translate("welcome")}</p>
     </div>
   );
 }
