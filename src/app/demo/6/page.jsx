@@ -1,37 +1,42 @@
 "use client";
 
 import { useState } from "react";
-import Wave from "./Wave";
+import Flag from "./Flag";
 
-function Greeting({ name }) {
-  const [index, setIndex] = useState(0);
+export default function Page() {
+  const [languageIndex, setLanguageIndex] = useState(0);
+  const [nameIndex, setNameIndex] = useState(0);
 
-  const greetings = ["Hello", "Hola", "Bonjour", "Hallo", "Привет"];
+  const languages = ["Hello", "Hola", "Bonjour", "Hallo", "Привет"];
+  const names = ["Quentin", "Robin", "Aurelien", "Ilyam", "Liam"];
 
-  const handleClick = () => {
-    const nextIndex = index === greetings.length - 1 ? 0 : index + 1;
-    setIndex(nextIndex);
+  const handleNextLanguageClick = () => {
+    const nextIndex =
+      languageIndex === languages.length - 1 ? 0 : languageIndex + 1;
+    setLanguageIndex(nextIndex);
+  };
+
+  const handleNextNameClick = () => {
+    const nextIndex = nameIndex === languages.length - 1 ? 0 : nameIndex + 1;
+    setNameIndex(nextIndex);
   };
 
   return (
     <main>
       <h1>
-        {greetings[index]}, {name}
+        {languages[languageIndex]}, {names[nameIndex]}
       </h1>
-      <button onClick={handleClick}>Next Greeting</button>
-      <Wave />
+      <button onClick={handleNextLanguageClick}>Next language</button>
+      <button onClick={handleNextNameClick}>Next name</button>
+      <Flag />
     </main>
   );
 }
 
-export default function Page() {
-  return <Greeting name="Tyler" />;
-}
-
 /**
  * Instructions:
- * Ajouter memo sur Wave
- * options={{ tone: index }} => Modifier Wave pour prendre ces props
+ * Ajouter memo sur Flag
+ * options={{ tone: index }} => Modifier Flag pour prendre ces props
  * Problème?
  * Solution (référence)
  * Ajout un compteur
