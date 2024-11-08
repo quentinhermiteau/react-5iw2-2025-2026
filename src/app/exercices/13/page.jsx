@@ -2,12 +2,12 @@
 
 const initialState = {
   past: [],
-  present: 0,
+  count: 0,
   future: [],
 };
 
 function reducer(state, action) {
-  const { past, present, future } = state;
+  const { past, count, future } = state;
 
   return state;
 }
@@ -22,7 +22,7 @@ export default function CounterWithUndoRedo() {
 
   return (
     <div>
-      <h1>Counter: {state.present}</h1>
+      <h1>Counter: {state.count}</h1>
       <button className="link" onClick={handleIncrement}>
         Increment
       </button>
