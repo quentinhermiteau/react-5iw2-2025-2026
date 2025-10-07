@@ -1,5 +1,7 @@
 "use client";
 
+import { memo } from "react";
+
 const toneMap = {
   0: "👋",
   1: "👋🏻",
@@ -9,13 +11,14 @@ const toneMap = {
   5: "👋🏿",
 };
 
-function Wave() {
+function Wave({ options }) {
+  const { tone } = options;
   console.log("Rendering Wave");
   return (
     <span role="img" aria-label="hand waving">
-      {toneMap[0]}
+      {toneMap[tone]}
     </span>
   );
 }
 
-export default Wave;
+export default memo(Wave);
