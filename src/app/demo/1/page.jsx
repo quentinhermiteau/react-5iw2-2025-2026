@@ -15,6 +15,9 @@ export default function Page() {
    * Montrer l'intérêt de la cleanup function avec un handleEventListener
    */
   useEffect(() => {
+    let ignore = false;
+    console.log("fetching " + id);
+
     const handleFetchTodo = async () => {
       setLoading(true);
       setTimeout(async () => {
@@ -25,12 +28,21 @@ export default function Page() {
           .then((response) => ({ response }))
           .catch((error) => ({ error }));
 
-        setTodo(response);
+        if (!ignore) {
+          setTodo(response);
+        } else {
+          console.log("ignored " + id);
+        }
         setLoading(false);
       }, 500);
     };
 
     handleFetchTodo();
+
+    return () => {
+      console.log("ignoring " + id);
+      ignore = true;
+    };
   }, [id]);
 
   return (
