@@ -1,45 +1,62 @@
 "use client";
 
-import { useState } from "react";
+import { useReducer } from "react";
 
-const initialFormData = {
-  name: "",
-  email: "",
-  address: "",
-  city: "",
-  zipcode: "",
+const initialState = {
+  fields: {
+    name: "",
+    email: "",
+    address: "",
+    city: "",
+    zipcode: "",
+  },
+  step: 1,
+};
+
+const reducer = (state, { action, payload: { key, value } = {} }) => {
+  switch (action) {
+    case "updateStep":
+      return { ...state, step: value };
+    case "updateField":
+      return { ...state, fields: { ...state.fields, [key]: value } };
+    case "reset":
+      return initialState;
+    default:
+      break;
+  }
 };
 
 export default function MultistepFormReducer() {
-  const [currentStep, setCurrentStep] = useState(1);
-  const [formData, setFormData] = useState(initialFormData);
+  const [{ fields, step }, dispatch] = useReducer(reducer, initialState);
 
   const handleNextStep = () => {
-    setCurrentStep(currentStep + 1);
+    dispatch({ action: "updateStep", payload: { value: step + 1 } });
   };
 
   const handlePrevStep = () => {
-    setCurrentStep(currentStep - 1);
+    dispatch({ action: "updateStep", payload: { value: step - 1 } });
   };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    dispatch({
+      action: "updateField",
+      payload: { key: e.target.name, value: e.target.value },
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     alert("Thank you for your submission");
-    setCurrentStep(1);
-    setFormData(initialFormData);
+    dispatch({ action: "reset" });
   };
 
-  if (currentStep === 1) {
+  if (step === 1) {
     return (
       <form onSubmit={handleSubmit}>
         <h2>Personal Information</h2>
         <div>
-          <label>Step {currentStep} of 3</label>
-          <progress value={currentStep} max={3} />
+          <label>Step {step} of 3</label>
+          <progress value={step} max={3} />
         </div>
         <div>
           <label htmlFor="name">Name</label>
@@ -48,7 +65,7 @@ export default function MultistepFormReducer() {
             name="name"
             id="name"
             placeholder="Enter your name"
-            value={formData.name}
+            value={fields.name}
             onChange={handleChange}
           />
         </div>
@@ -60,7 +77,7 @@ export default function MultistepFormReducer() {
             id="email"
             type="email"
             placeholder="Enter your email"
-            value={formData.email}
+            value={fields.email}
             onChange={handleChange}
           />
         </div>
@@ -69,13 +86,13 @@ export default function MultistepFormReducer() {
         </button>
       </form>
     );
-  } else if (currentStep === 2) {
+  } else if (step === 2) {
     return (
       <form onSubmit={handleSubmit}>
         <h2>Address</h2>
         <div>
-          <label>Step {currentStep} of 3</label>
-          <progress value={currentStep} max={3} />
+          <label>Step {step} of 3</label>
+          <progress value={step} max={3} />
         </div>
         <div>
           <label htmlFor="address">Address</label>
@@ -85,7 +102,7 @@ export default function MultistepFormReducer() {
             id="address"
             type="address"
             placeholder="What is your address?"
-            value={formData.address}
+            value={fields.address}
             onChange={handleChange}
           />
         </div>
@@ -96,7 +113,7 @@ export default function MultistepFormReducer() {
             name="city"
             id="city"
             placeholder="What city do you live in?"
-            value={formData.city}
+            value={fields.city}
             onChange={handleChange}
           />
         </div>
@@ -108,7 +125,7 @@ export default function MultistepFormReducer() {
             id="zipcode"
             type="number"
             placeholder="What is your zipcode?"
-            value={formData.zipcode}
+            value={fields.zipcode}
             onChange={handleChange}
           />
         </div>
@@ -122,21 +139,21 @@ export default function MultistepFormReducer() {
         </div>
       </form>
     );
-  } else if (currentStep === 3) {
+  } else if (step === 3) {
     return (
       <form onSubmit={handleSubmit}>
         <h2>Confirm your information:</h2>
         <div>
-          <label>Step {currentStep} of 3</label>
-          <progress value={currentStep} max={3} />
+          <label>Step {step} of 3</label>
+          <progress value={step} max={3} />
         </div>
         <table>
           <tbody>
-            {Object.keys(formData).map((key) => {
+            {Object.keys(fields).map((key) => {
               return (
                 <tr key={key}>
                   <td>{key}</td>
-                  <td>{formData[key]}</td>
+                  <td>{fields[key]}</td>
                 </tr>
               );
             })}
